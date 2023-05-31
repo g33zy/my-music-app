@@ -1,23 +1,45 @@
-import logo from './logo.svg';
+
+
+import React, {useState} from 'react';
 import './App.css';
 
+
+import NavBar from './components/NavBar';
+import Login from './components/Login';
+// import Dashboard from './components/Dashboard';
+import OnlineModeCard from './components/OnlineModeCard';
+// import Button from './components/Button'
+import MasterVolumeCard from './components/MasterVolumeCard'
+import SoundQualityCard from './components/SoundQualityCard'
+import Dashboard from './components/Dashboard';
+
+
+
+
+
+
 function App() {
+  const [loggedIn, setLoggedin] = useState(false)
+ 
+
+  const handleLogin = () => {
+    setLoggedin(!loggedIn)
+  }
+
+  console.log(loggedIn)
+
+
+
   return (
+  
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar/>
+  
+
+      {loggedIn ? <Dashboard/> : <Login  handleLogin={ handleLogin } /> }
+
+      
+      
     </div>
   );
 }
